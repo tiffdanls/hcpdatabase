@@ -39,7 +39,7 @@ if(isset($_POST['submit']))
 
 	if( empty($_POST['patientid']) || empty($_POST['symptoms']) || empty($_POST['clear'])) //will make sure you cannot input empty space	
  		{
-	 		echo "Missing data to update patient.";
+	 		echo "<p align = 'center'>Missing data to update patient.</p>";
  		}
 
  	//$sql = "insert into schedule VALUES ($scheduleid, $patientid, $doctorid, '$date', '$time')";
@@ -48,24 +48,14 @@ if(isset($_POST['submit']))
 
  	if(mysqli_query($mysqli, $sql))
  	{
- 		echo "Patient information has been updated.";
+ 		echo "<p align = 'center'>Patient information has been updated.</p>";
  	}
  	else
  	{
- 		$output = "Can't update patient record.";
+ 		echo "<p align = 'center'>Can't update patient record.</p>";
 
  	}
 
 }
-
-?>
-
-<?php
-
-echo $output;
-//echo $search;
-//echo $doctorid;
-//echo $date;
-//echo $time;
-
+echo "<center><a href='index.php'>Return to Home</a></center>";
 ?>

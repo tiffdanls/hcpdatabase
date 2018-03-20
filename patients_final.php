@@ -39,20 +39,17 @@ if(isset($_POST['submit']))
  
 		if($patients->num_rows > 0)
 		{
-
+			echo "<center><table border='1' width='700px'>";
+        	echo "<tr>";
+        	echo "<th>Patient ID</th>";
+        	echo "<th>FirstName</th>";
+        	echo "<th>LastName</th>";
+        	echo "<th>DateofBirth</th>";
+        	echo "<th>HCP</th>";	
+			echo "</tr>";
+				
 			while($row = mysqli_fetch_array($patients))
 			{
-			
-				echo "<table>";
-        		echo "<tr>";
-        		echo "<th>Patient ID</th>";
-        		echo "<th>FirstName</th>";
-        		echo "<th>LastName</th>";
-        		echo "<th>DateofBirth</th>";
-        		echo "<th>HCP</th>";	
-				echo "</tr>";
-		
-		
 			    echo "<tr>";
                 echo "<td>" . $row['PatientID'] . "</td>";
                 echo "<td>" . $row['FirstName'] . "</td>";
@@ -62,19 +59,29 @@ if(isset($_POST['submit']))
 				echo "</tr>";
 		
 			}
+				echo "</table></center>";
 		}
 		else
 		{
 
-			$output = "That patient does not exist.";
+			echo "<p align = 'center'>That patient does not exist.</p>";
 		}
+		
 	//}
 }
 
-?>
+echo "<br>";
+echo "<center>1 - Dr. Lopez - Pediatrician</center>";
+echo "<br>";
+echo "<center>2 - Dr. Miles - Dermatologist</center>";
+echo "<br>";
+echo "<center>3- Dr. Rivera - Cardiologist</center>";
+echo "<br>";
+echo "<center>4 - Dr. Cooper - Allergist</center>";
+echo "<br>";
 
-<?php
 
-echo $output;
+
+echo "<center><a href='index.php'>Return to Home</a></center>";
 
 ?>

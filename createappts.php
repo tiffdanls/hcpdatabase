@@ -41,31 +41,32 @@ if(isset($_POST['submit']))
 
 	if( empty($_POST['patientid']) || empty($_POST['doctorid']) || empty($_POST['date']) || empty($_POST['time'])) //will make sure you cannot search empty space	
  		{
-	 		echo "Missing data to schedule appointment.";
+	 		echo "<p align = 'center'>Missing data to schedule appointment.</p>";
  		}
 
  	$sql = "insert into schedule VALUES ($scheduleid, $patientid, $doctorid, '$date', '$time')";
 
  	if(mysqli_query($mysqli, $sql))
  	{
- 		echo "Appointment has been added.";
+ 		echo "<p align = 'center'>Appointment has been added.</p>";
  	}
  	else
  	{
- 		$output = "Can't create appointment.";
+ 		echo "<p align = 'center'>Can't create appointment.</p>";
 
  	}
 
 }
+echo "<br>";
+echo "<center>1 - Dr. Lopez - Pediatrician</center>";
+echo "<br>";
+echo "<center>2 - Dr. Miles - Dermatologist</center>";
+echo "<br>";
+echo "<center>3- Dr. Rivera - Cardiologist</center>";
+echo "<br>";
+echo "<center>4 - Dr. Cooper - Allergist</center>";
+echo "<br>";
 
-?>
 
-<?php
-
-echo $output;
-//echo $search;
-//echo $doctorid;
-//echo $date;
-//echo $time;
-
+echo "<center><a href='index.php'>Return to Home</a></center>";
 ?>

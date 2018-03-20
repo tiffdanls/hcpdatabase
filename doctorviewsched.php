@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
 	*/
 	
 	$providers = $mysqli->query(
-	"SELECT doctors.DoctorID, doctors.doctorname,schedule.date,schedule.time, patients.PatientID, patients.FirstName, patients.LastName, patients.Symptoms, patients.Clear
+	"SELECT DISTINCT doctors.DoctorID, doctors.doctorname,schedule.date,schedule.time, patients.PatientID, patients.FirstName, patients.LastName, patients.Symptoms, patients.Clear
   	FROM schedule	
     INNER JOIN doctors
     ON doctors.DoctorID=schedule.DoctorID
@@ -47,7 +47,7 @@ if(isset($_POST['submit']))
 
 	if(empty($_POST['search'])) //will make sure you cannot search empty space
  	{
-	 	echo "Doctor did not input any data.";
+	 	echo "<p align='center'>Doctor did not input any data.</p>";
  	}
 
 	else
@@ -55,11 +55,7 @@ if(isset($_POST['submit']))
  
 		if($providers->num_rows > 0)
 		{
-
-			while($row = mysqli_fetch_array($providers))
-			{
-			
-				echo "<table>";
+				echo "<center><table border='1' width='700px'>";
         		echo "<tr>";
         		echo "<th>Doctor ID</th>";
         		echo "<th>Doctor Name</th>";
@@ -72,6 +68,10 @@ if(isset($_POST['submit']))
 				echo "<th>Insureance Cleared</th>";
 				echo "</tr>";
 		
+			while($row = mysqli_fetch_array($providers))
+			{
+			
+
 		
 			    echo "<tr>";
                 echo "<td>" . $row['DoctorID'] . "</td>";
@@ -86,20 +86,24 @@ if(isset($_POST['submit']))
 				echo "</tr>";
 		
 			}
+			echo "</table></center>";
 		}
 		else
 		{
 
-			$output = "No doctors found.";
+			echo "<p align='center'>No doctors found.</p>";
 		}
 	}
 }
+echo "<br>";
+echo "<center>1 - Dr. Lopez - Pediatrician</center>";
+echo "<br>";
+echo "<center>2 - Dr. Miles - Dermatologist</center>";
+echo "<br>";
+echo "<center>3- Dr. Rivera - Cardiologist</center>";
+echo "<br>";
+echo "<center>4 - Dr. Cooper - Allergist</center>";
+echo "<br>";
 
-?>
-
-<?php
-
-echo $output;
-//echo $search;
-
+echo "<center><a href='index.php'>Return to Home</a></center>";
 ?>

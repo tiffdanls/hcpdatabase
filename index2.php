@@ -41,7 +41,7 @@ if(isset($_POST['submit']))
 	else
 	{
 		$mysqli = NEW mysqli("localhost", "root", "12345", "healthcare");
-		$login = $mysqli->query("SELECT * FROM users WHERE username = '$user' AND password = '$password'");
+		$login = $mysqli->query("SELECT * FROM users WHERE username = '$user' AND password = '".md5($password)."');
 		
 		if($login->num_rows == 0)
 		{
@@ -74,7 +74,9 @@ if(isset($_POST['submit']))
 				echo "<p align='center'>You are a doctor.</p> ";
 				echo "<p align='center'><a href = doctorviewsched.php>View Doctor's Schedule</a></p>";
 				echo "<p align='center'><a href = updatepatient.php>Update Patient</a></p>";
-				
+				echo "<p align='center'><a href = patients_final.php>View Patients</a></p>";
+				echo "<p align='center'><a href = providers.php>View Doctors</a></p>";
+				echo "<p align='center'><a href = createappts.php>Create Appointments</a></p>";
 			}
 			
 		}

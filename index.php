@@ -24,7 +24,7 @@ if(isset($_POST['submit']))
 {
 
 	$user = $_POST['user'];
-	$password = $_POST['password'];
+	$password = md5($_POST['password']);
 	
 	/*$login = $mysqli->query(
 	"select position from users where username = '$user' and password = '$password'";
@@ -74,7 +74,9 @@ if(isset($_POST['submit']))
 				echo "<p align='center'>You are a doctor.</p> ";
 				echo "<p align='center'><a href = doctorviewsched.php>View Doctor's Schedule</a></p>";
 				echo "<p align='center'><a href = updatepatient.php>Update Patient</a></p>";
-				
+				echo "<p align='center'><a href = patients_final.php>View Patients</a></p>";
+				echo "<p align='center'><a href = providers.php>View Doctors</a></p>";
+				echo "<p align='center'><a href = createappts.php>Create Appointments</a></p>";
 			}
 			
 		}
